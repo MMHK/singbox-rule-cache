@@ -1,0 +1,33 @@
+# 使用方式：
+# 1. 建構映像：docker compose build app-build
+# 2. 啟動服務：docker compose up -d
+# 3. 查看日誌：docker compose logs -f
+
+services:
+  # === Build Service ===
+  # 建構映像，不運行
+  # 使用：docker compose build app-build
+  app-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mmhk/singbox-rule-cache:latest
+    profiles: ["build"]
+
+  # === Run Service ===
+  # 運行同步服務
+  singbox-rule-cache:
+    image: mmhk/singbox-rule-cache:latest
+    container_name: singbox-rule-cache
+    restart: unless-stopped
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - cache-data:/app/cache
+    environment:
+      - SYNC_INTERVAL=60
+      - DOWNLOAD_TIMEOUT=30
+      - MAX_RETRIES=3
+    command: ["start"]
+
+volumes:
+  cache-data:
