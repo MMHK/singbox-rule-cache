@@ -1,0 +1,14 @@
+cache:
+  dir: "./cache"
+  max_retries: 3
+  timeout_seconds: 30
+
+sync:
+  interval_minutes: 60
+  auto_start: false
+
+rules:
+  - name: "example"
+    url: "https://example.com/rules.srs"
+    local_file: "example.srs"
+    enabled: true
