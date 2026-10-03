@@ -21,8 +21,8 @@ profile.cov
 # Dependency directories
 vendor/
 
-# Cache directory
-cache/
+# Cache directory (runtime data, not pkg/cache/)
+/cache/
 
 # SRS files
 *.srs
