@@ -1,5 +1,12 @@
 # singbox-rule-cache
 
+[![Build Docker Image](https://github.com/MMHK/singbox-rule-cache/actions/workflows/docker-build.yml/badge.svg)](https://github.com/MMHK/singbox-rule-cache/actions/workflows/docker-build.yml)
+[![Docker Hub](https://img.shields.io/docker/pulls/mmhk/singbox-rule-cache?logo=docker&label=pulls)](https://hub.docker.com/r/mmhk/singbox-rule-cache)
+[![Docker Image Version](https://img.shields.io/docker/v/mmhk/singbox-rule-cache?logo=docker&label=docker)](https://hub.docker.com/r/mmhk/singbox-rule-cache)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/MMHK/singbox-rule-cache?logo=go)](https://go.dev/)
+[![GitHub Release](https://img.shields.io/github/v/release/MMHK/singbox-rule-cache?logo=github)](https://github.com/MMHK/singbox-rule-cache/releases)
+[![License](https://img.shields.io/github/license/MMHK/singbox-rule-cache)](LICENSE)
+
 A tool to cache [sing-box](https://sing-box.sagernet.org/) remote rule-set `.srs` files to local storage.
 
 ## Features
@@ -14,7 +21,25 @@ A tool to cache [sing-box](https://sing-box.sagernet.org/) remote rule-set `.srs
 
 ## Quick Start
 
-### Build
+### Docker (Recommended)
+
+```bash
+# Pull image
+docker pull mmhk/singbox-rule-cache:latest
+
+# Run with docker compose
+docker compose up -d
+
+# Or run directly
+docker run -d \
+  --name singbox-rule-cache \
+  -v $(pwd)/config.yaml:/app/config.yaml:ro \
+  -v cache-data:/app/cache \
+  -e SYNC_INTERVAL=60 \
+  mmhk/singbox-rule-cache:latest start
+```
+
+### Build from Source
 
 ```bash
 go build -o singbox-rule-cache.exe .
