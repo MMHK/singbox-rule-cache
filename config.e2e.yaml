@@ -1,0 +1,49 @@
+cache:
+  dir: "./test-cache"
+  max_retries: 3
+  timeout_seconds: 30
+
+sync:
+  interval_minutes: 60
+  auto_start: false
+
+rules:
+  - name: "overseas-ai"
+    url: "https://raw.githubusercontent.com/mm-sam/OverseasAI.list/refs/heads/main/rule/Singbox/OverseasAI/OverseasAI.srs"
+    local_file: "OverseasAI.srs"
+    enabled: true
+    
+  - name: "ip-private"
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs"
+    local_file: "ip-private.srs"
+    enabled: true
+    
+  - name: "site-private"
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs"
+    local_file: "site-private.srs"
+    enabled: true
+    
+  - name: "category-ads-all"
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+    local_file: "category-ads-all.srs"
+    enabled: true
+    
+  - name: "accelerated-domains-china"
+    url: "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/accelerated-domains.china.conf.srs"
+    local_file: "accelerated-domains.china.conf.srs"
+    enabled: true
+    
+  - name: "ip-cn"
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+    local_file: "ip-cn.srs"
+    enabled: true
+    
+  - name: "site-cn"
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+    local_file: "site-cn.srs"
+    enabled: true
+    
+  - name: "geolocation-not-cn"
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+    local_file: "geolocation-!cn.srs"
+    enabled: true
